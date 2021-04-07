@@ -7,6 +7,8 @@ import javax.persistence.*;
 public class Pet {
 
     @Id
+    @SequenceGenerator(name = "pet_seq", sequenceName = "pet_seq", initialValue = 1, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pet_seq")
     private Long id;
     private String name;
     @Enumerated(EnumType.STRING)
