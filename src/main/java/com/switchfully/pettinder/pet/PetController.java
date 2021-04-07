@@ -1,9 +1,6 @@
 package com.switchfully.pettinder.pet;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,5 +27,10 @@ public class PetController {
     @GetMapping(path = "{name}/incrementPopularity", produces = "application/json")
     public void increasePopularity(@PathVariable String name) {
         petService.increasePopularity(name);
+    }
+
+    @PostMapping(consumes = "application/json")
+    public void addPet(@RequestBody PetDTO petDTO){
+        petService.save(petDTO);
     }
 }

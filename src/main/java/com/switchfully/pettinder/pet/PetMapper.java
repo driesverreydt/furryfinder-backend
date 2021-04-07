@@ -3,6 +3,7 @@ package com.switchfully.pettinder.pet;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Component
@@ -12,6 +13,10 @@ public class PetMapper {
     }
 
     public PetDTO toDTO(Pet pet){
-        return new PetDTO(pet.getName(), pet.getKind().getLabel(), pet.getImage(), pet.getProfileText(), pet.getPopularity());
+        return new PetDTO(pet.getName(), pet.getKind().getLabel(), pet.getImage(), pet.getProfileText());
+    }
+
+    public Pet toEntity(PetDTO petDTO) {
+        return new Pet(petDTO.getName(), Kind.valueOf(petDTO.getKind().toUpperCase(Locale.ROOT)), petDTO.getImage(), petDTO.getProfileText());
     }
 }

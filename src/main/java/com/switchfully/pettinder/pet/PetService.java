@@ -29,4 +29,8 @@ public class PetService {
     public void increasePopularity(String name) {
         petRepository.findByName(name).increasePopularity();
     }
+
+    public void save(PetDTO petDTO) {
+        petRepository.save(petMapper.toEntity(petDTO));
+    }
 }

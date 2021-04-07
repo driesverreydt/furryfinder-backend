@@ -1,18 +1,22 @@
 package com.switchfully.pettinder.pet;
 
-public class PetDTO {
-    private final String name;
-    private final String kind;
-    private final String image;
-    private final String profileText;
-    private final Integer popularity;
+import com.fasterxml.jackson.annotation.JsonCreator;
 
-    public PetDTO(String name, String kind, String image, String profileText, Integer popularity) {
+public class PetDTO {
+    private String name;
+    private String kind;
+    private String image;
+    private String profileText;
+    private Integer popularity;
+
+    public PetDTO() {
+    }
+
+    public PetDTO(String name, String kind, String image, String profileText) {
         this.name = name;
         this.kind = kind;
         this.image = image;
         this.profileText = profileText;
-        this.popularity = popularity;
     }
 
     public String getName() {

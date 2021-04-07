@@ -21,6 +21,14 @@ public class Pet {
 
     }
 
+    public Pet(String name, Kind kind, String image, String profileText) {
+        this.name = name;
+        this.kind = kind;
+        this.image = image;
+        this.profileText = profileText;
+        this.popularity = 0;
+    }
+
     public String getName() {
         return name;
     }
