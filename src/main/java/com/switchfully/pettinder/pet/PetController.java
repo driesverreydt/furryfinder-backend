@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "pets")
 public class PetController {
 
@@ -28,7 +29,7 @@ public class PetController {
     public void increasePopularity(@PathVariable String name) {
         petService.increasePopularity(name);
     }
-
+    
     @PostMapping(consumes = "application/json")
     public void addPet(@RequestBody PetDTO petDTO){
         petService.save(petDTO);

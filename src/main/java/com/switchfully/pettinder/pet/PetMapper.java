@@ -13,7 +13,7 @@ public class PetMapper {
     }
 
     public PetDTO toDTO(Pet pet){
-        return new PetDTO(pet.getName(), pet.getKind().getLabel(), pet.getImage(), pet.getProfileText());
+        return new PetDTO(pet.getName(), pet.getKind().getLabel(), pet.getImage(), pet.getProfileText(), pet.getPopularity());
     }
 
     public Pet toEntity(PetDTO petDTO) {

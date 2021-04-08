@@ -1,7 +1,5 @@
 package com.switchfully.pettinder.pet;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-
 public class PetDTO {
     private String name;
     private String kind;
@@ -12,11 +10,12 @@ public class PetDTO {
     public PetDTO() {
     }
 
-    public PetDTO(String name, String kind, String image, String profileText) {
+    public PetDTO(String name, String kind, String image, String profileText, Integer popularity) {
         this.name = name;
         this.kind = kind;
         this.image = image;
         this.profileText = profileText;
+        this.popularity = popularity;
     }
 
     public String getName() {
