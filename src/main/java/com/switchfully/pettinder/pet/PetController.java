@@ -1,7 +1,10 @@
 package com.switchfully.pettinder.pet;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -10,6 +13,7 @@ import java.util.List;
 public class PetController {
 
     private final PetService petService;
+    public static final Logger logger = LoggerFactory.getLogger(PetController.class);
 
     public PetController(PetService petService) {
         this.petService = petService;
@@ -29,9 +33,16 @@ public class PetController {
     public void increasePopularity(@PathVariable String name) {
         petService.increasePopularity(name);
     }
-    
+
     @PostMapping(consumes = "application/json")
     public void addPet(@RequestBody PetDTO petDTO){
+        logger.info("Pet created");
         petService.save(petDTO);
+    }
+
+    @PostMapping(path = "/sendText")
+    public void sendWhatsApp(@RequestBody String name) throws IOException {
+        logger.info("Text sent");
+        petService.sendWhatsApp(name);
     }
 }
