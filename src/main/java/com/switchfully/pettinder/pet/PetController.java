@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "https://amazing-benz-901ab5.netlify.app/")
+@CrossOrigin(origins = "https://amazing-benz-901ab5.netlify.app/pets")
 @RequestMapping(value = "pets")
 public class PetController {
 
