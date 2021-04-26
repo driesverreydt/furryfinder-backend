@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -41,7 +40,7 @@ public class PetController {
     }
 
     @PostMapping(path = "/sendText")
-    public void sendWhatsApp(@RequestBody String name) throws IOException {
+    public void sendWhatsApp(@RequestBody String name) {
         logger.info("Text sent");
         petService.sendWhatsApp(name);
     }
