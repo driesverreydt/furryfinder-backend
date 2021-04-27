@@ -4,7 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = "https://petinder.netlify.app")
@@ -37,6 +39,15 @@ public class PetController {
     public void addPet(@RequestBody PetDTO petDTO){
         logger.info("Pet created");
         petService.save(petDTO);
+    }
+
+    @DeleteMapping("/{name}")
+    public @ResponseBody Map<String, Boolean> deletePet(@PathVariable(value = "name") String name) {
+        PetDTO pet = petService.getPet(name);
+        petService.delete(pet);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return response;
     }
 
     @PostMapping(path = "/sendText")

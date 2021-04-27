@@ -38,6 +38,10 @@ public class PetService {
         petRepository.save(petMapper.toEntity(petDTO));
     }
 
+    public void delete(PetDTO petDTO) {
+        petRepository.deleteByName(petDTO.getName());
+    }
+
     public void sendWhatsApp(String name) {
         name = name.substring(9, name.length() - 2);
          Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
