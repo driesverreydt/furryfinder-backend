@@ -21,12 +21,17 @@ public class Pet {
 
     }
 
-    public Pet(String name, Kind kind, String image, String profileText) {
+    public Pet(Long id, String name, Kind kind, String image, String profileText) {
+        this.id = id;
         this.name = name;
         this.kind = kind;
         this.image = image;
         this.profileText = profileText;
         this.popularity = 0;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {

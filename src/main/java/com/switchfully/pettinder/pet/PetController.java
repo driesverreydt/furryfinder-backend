@@ -41,10 +41,9 @@ public class PetController {
         petService.save(petDTO);
     }
 
-    @DeleteMapping("/{name}")
-    public @ResponseBody Map<String, Boolean> deletePet(@PathVariable(value = "name") String name) {
-        PetDTO pet = petService.getPet(name);
-        petService.delete(pet);
+    @DeleteMapping("/{id}")
+    public @ResponseBody Map<String, Boolean> deletePet(@PathVariable(value = "id") Long id) {
+        petService.deletePet(id);
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);
         return response;

@@ -30,16 +30,16 @@ public class PetService {
         return petMapper.toDTO(petRepository.findByName(name));
     }
 
+    public void deletePet(Long id) {
+        petRepository.deleteById(id);
+    }
+
     public void increasePopularity(String name) {
         petRepository.findByName(name).increasePopularity();
     }
 
     public void save(PetDTO petDTO) {
         petRepository.save(petMapper.toEntity(petDTO));
-    }
-
-    public void delete(PetDTO petDTO) {
-        petRepository.deleteByName(petDTO.getName());
     }
 
     public void sendWhatsApp(String name) {

@@ -13,10 +13,10 @@ public class PetMapper {
     }
 
     public PetDTO toDTO(Pet pet){
-        return new PetDTO(pet.getName(), pet.getKind().getLabel(), pet.getImage(), pet.getProfileText(), pet.getPopularity());
+        return new PetDTO(pet.getId(), pet.getName(), pet.getKind().getLabel(), pet.getImage(), pet.getProfileText(), pet.getPopularity());
     }
 
     public Pet toEntity(PetDTO petDTO) {
-        return new Pet(petDTO.getName(), Kind.valueOf(petDTO.getKind().toUpperCase(Locale.ROOT)), petDTO.getImage(), petDTO.getProfileText());
+        return new Pet(petDTO.getId(), petDTO.getName(), Kind.valueOf(petDTO.getKind().toUpperCase(Locale.ROOT)), petDTO.getImage(), petDTO.getProfileText());
     }
 }

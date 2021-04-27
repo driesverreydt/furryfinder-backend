@@ -1,6 +1,7 @@
 package com.switchfully.pettinder.pet;
 
 public class PetDTO {
+    private Long id;
     private String name;
     private String kind;
     private String image;
@@ -10,12 +11,17 @@ public class PetDTO {
     public PetDTO() {
     }
 
-    public PetDTO(String name, String kind, String image, String profileText, Integer popularity) {
+    public PetDTO(Long id, String name, String kind, String image, String profileText, Integer popularity) {
+        this.id = id;
         this.name = name;
         this.kind = kind;
         this.image = image;
         this.profileText = profileText;
         this.popularity = popularity;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
