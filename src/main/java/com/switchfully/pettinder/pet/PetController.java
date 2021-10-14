@@ -2,14 +2,21 @@ package com.switchfully.pettinder.pet;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.constraints.Null;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
+
 @RestController
-@CrossOrigin(origins = "https://petinder.netlify.app")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "pets")
 public class PetController {
 
@@ -27,7 +34,13 @@ public class PetController {
 
     @GetMapping(path = "{name}", produces = "application/json")
     public PetDTO getPet(@PathVariable String name) {
-        return petService.getPet(name);
+        try {
+            return petService.getPet(name);
+        }
+        catch (NullPointerException nullPointerException) {
+            throw new ResponseStatusException(BAD_REQUEST, "The provided username " + name + " does not exist.", nullPointerException);
+        }
+//        return petService.getPet(name);
     }
 
     @GetMapping(path = "{name}/incrementPopularity", produces = "application/json")
@@ -54,4 +67,9 @@ public class PetController {
         logger.info("Text sent");
         petService.sendWhatsApp(name);
     }
+
+//    @ExceptionHandler(NullPointerException.class)
+//    protected void nullpointerException(NullPointerException nullPointerException, HttpServletResponse response) throws IOException {
+//        response.sendError(BAD_REQUEST.value(), nullPointerException.getMessage());
+//    }
 }
