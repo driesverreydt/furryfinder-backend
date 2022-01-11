@@ -12,7 +12,7 @@ import java.util.Map;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
 @RestController
-@CrossOrigin(origins = "https://furryfinder.netlify.app/")
+@CrossOrigin(origins = "*")
 @RequestMapping(value = "pets")
 public class PetController {
 

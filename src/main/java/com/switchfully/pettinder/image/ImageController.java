@@ -5,7 +5,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "https://furryfinder.netlify.app/")
+@CrossOrigin(origins = "*")
 @RequestMapping(path = "images")
 public class ImageController {
 
